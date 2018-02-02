@@ -69,7 +69,18 @@ namespace zmq
         //  Send and recv - knowing which pipe was used.
         int sendpipe (zmq::msg_t *msg_, zmq::pipe_t **pipe_);
         int recvpipe (zmq::msg_t *msg_, zmq::pipe_t **pipe_);
-
+        
+        //  Get fair-queue
+        inline const fq_t &get_fq () const
+        {
+            return fq;
+        }
+        
+        //  Get load-balancing queue
+        inline const lb_t &get_lb () const
+        {
+            return lb; 
+        }
     private:
 
         //  Messages are fair-queued from inbound pipes. And load-balanced to

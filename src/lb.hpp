@@ -60,10 +60,22 @@ namespace zmq
 
         bool has_out ();
 
+        typedef array_t <pipe_t, 2> pipes_t;
+        //  Get number of pipes assigned to socket
+        inline typename pipes_t::size_type get_number_of_pipes ()
+        {
+            return pipes.size();
+        }
+
+        //  Get pipe identified by order number
+        inline const pipe_t *get_pipe (typename pipes_t::size_type number)
+        {
+            return pipes[number];
+        }
+
     private:
 
         //  List of outbound pipes.
-        typedef array_t <pipe_t, 2> pipes_t;
         pipes_t pipes;
 
         //  Number of active pipes. All the active pipes are located at the

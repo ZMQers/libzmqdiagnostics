@@ -141,6 +141,61 @@ namespace zmq
 
         //  Returns true if HWM is not reached
         bool check_hwm () const;
+
+        //  Return number of messages read
+        inline uint64_t get_msgs_read () const
+        {
+            return msgs_read;
+        }
+
+        //  Return number of messages written
+        inline uint64_t get_msgs_written () const
+        {
+            return msgs_written;
+        }
+
+        //  Return number of messages read by peer
+        inline uint64_t get_peers_msgs_read () const
+        {
+            return peers_msgs_read;
+        }
+
+        //  Return if input pipe is active
+        inline bool get_in_active () const
+        {
+            return in_active;
+        }
+
+        //  Return if output pipe is active
+        inline bool get_out_active () const
+        {
+            return out_active;
+        }
+
+        //  Return high watermark value
+        inline int get_hwm () const
+        {
+            return hwm;
+        }
+
+        //  Return low watermark value
+        inline int get_lwm () const
+        {
+            return lwm;
+        }
+
+        //  Return input pipe high watermark boost buffer value
+        inline int get_inhwmboost () const
+        {
+            return inhwmboost;
+        }
+
+        //  Return output pipe high watermark boost buffer value
+        inline int get_outhwmboost () const
+        {
+            return outhwmboost;
+        }
+
     private:
 
         //  Type of the underlying lock-free pipe.

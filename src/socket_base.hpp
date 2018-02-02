@@ -143,6 +143,19 @@ namespace zmq
         virtual int get_peer_state (const void *identity,
                                     size_t identity_size) const;
 
+        typedef array_t <pipe_t, 3> pipes_t;
+        //  Get number of pipes assigned to socket
+        inline typename pipes_t::size_type get_number_of_pipes ()
+        {
+            return pipes.size();
+        }
+
+        //  Get pipe identified by order number
+        inline const pipe_t *get_pipe (typename pipes_t::size_type number)
+        {
+            return pipes[number];
+        }
+
     protected:
 
         socket_base_t (zmq::ctx_t *parent_, uint32_t tid_, int sid_, bool thread_safe_ = false);
@@ -258,7 +271,6 @@ namespace zmq
         i_mailbox *mailbox;
 
         //  List of attached pipes.
-        typedef array_t <pipe_t, 3> pipes_t;
         pipes_t pipes;
 
         //  Reaper's poller and handle of this socket within it.
